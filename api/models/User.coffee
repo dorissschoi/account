@@ -8,6 +8,9 @@ module.exports =
       type: 'string'
       required: true
       unique: true
+ 
+    postTitle:
+      type: 'string'
 
     manage:
       collection: 'vote'

@@ -8,8 +8,15 @@ module.exports =
       type: 'string'
       required: true
 
+    type:
+      type: 'string'
+      enum: ['maintenance','procurement','server farm','EGIS','virement']
+
     desc:
       type: 'string'
+
+    qty:
+      type: 'integer'
 
     estAmt:
       type: 'integer' 
@@ -23,11 +30,12 @@ module.exports =
     PO:
       type: 'string'
 
-    InvDate:
+    InvoiceDate:
       type: 'datetime'
 
     status:
       type: 'string'
+      enum: ['outstanding','processing','pending settle','settled']
 
     maintStartDate:
       type: 'datetime'
