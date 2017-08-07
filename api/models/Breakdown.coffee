@@ -4,7 +4,7 @@ module.exports =
   schema: true
 
   attributes:
-    project:
+    group:
       type: 'string'
       required: true
 
