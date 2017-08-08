@@ -9,4 +9,4 @@ module.exports =
     mongo:
       adapter: 'sails-mongo'
       driver: 'mongodb'
-      url: "#{process.env.DBURL}#{process.env.APP_DB}" 
+      url: "#{process.env.DBURL}" || 'mongodb://mongo:27017/account'

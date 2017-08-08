@@ -1,12 +1,11 @@
 module.exports = 
 	policies:		
-		DbController:
-			'*':		false
+		VoteTypeController:
+			'*':		false 
+			create:		['isAuth']
 			find:		['isAuth']
-			findByMe:	['isAuth', 'filterByOwner']
-			findOne:	['isAuth', 'filterByOwner']			
-			create:		['isAuth', 'setOwner']
-			update:		['isAuth', 'isOwner']
-			destroy:	['isAuth', 'isOwner']
-			export:		['isAuth', 'isOwner']
-			import:		['isAuth', 'isOwner']
+			update:		['isAuth']
+		VoteController:
+			'*':		false 
+			create:		['isAuth']
+			find:		['isAuth']
