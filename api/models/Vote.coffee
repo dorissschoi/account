@@ -17,6 +17,7 @@ module.exports =
 
     type:
       model: 'voteType'
+      unique: true
     
     details:
       collection: 'breakdown'
