@@ -1,0 +1,3 @@
+#VoteController
+
+module.exports = {}
