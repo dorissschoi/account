@@ -1,7 +1,7 @@
 FROM node
 
 ENV VER=${VER:-master} \
-    REPO=https://github.com/dorissschoi/account \
+    REPO=https://github.com/account/account \
     APP=/usr/src/app
 
 RUN apt-get update && \
@@ -13,7 +13,7 @@ WORKDIR $APP
 
 RUN npm install && \
     node_modules/.bin/bower install --allow-root
-
+	
 EXPOSE 1337
 
 ENTRYPOINT ./entrypoint.sh
