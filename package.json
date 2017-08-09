@@ -1,8 +1,8 @@
 {
-  "name": "db",
+  "name": "account",
   "private": true,
   "version": "0.0.1",
-  "description": "a Sails application",
+  "description": "account application",
   "keywords": [],
   "dependencies": {
     "angular-file-saver": "^1.1.3",
@@ -63,8 +63,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jeffery/db.git"
+    "url": "git://github.com/dorissschoi/account.git"
   },
-  "author": "jeffery",
+  "author": "dorissschoi",
   "license": ""
 }

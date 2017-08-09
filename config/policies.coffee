@@ -7,6 +7,9 @@ module.exports =
 			findOne:	['isAuth']
 			update:		['isAuth']
 			add:		['isAuth']
+			remove:		['isAuth']
+			destroy:	['isAuth']
+			populate:	['isAuth']
 		VoteController:
 			'*':		false 
 			create:		['isAuth']
@@ -14,6 +17,9 @@ module.exports =
 			findOne:	['isAuth']
 			update:		['isAuth']
 			add:		['isAuth']
+			remove:		['isAuth']
+			destroy:	['isAuth']
+			populate:	['isAuth']
 		UserController:
 			'*':		false 
 			create:		['isAuth']
@@ -21,10 +27,16 @@ module.exports =
 			findOne:	['isAuth']
 			update:		['isAuth']
 			add:		['isAuth']
+			remove:		['isAuth']
+			destroy:	['isAuth']
+			populate:	['isAuth']
 		BreakdownController:
 			'*':		false 
-			create:		['isAuth']
+			create:		['isAuth','setOwner']
 			find:		['isAuth']
 			findOne:	['isAuth']
 			update:		['isAuth']
 			add:		['isAuth']
+			remove:		['isAuth']
+			destroy:	['isAuth']
+			populate:	['isAuth']
