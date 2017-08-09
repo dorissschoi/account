@@ -22,20 +22,20 @@ module.exports =
 			populate:	['isAuth']
 		UserController:
 			'*':		false 
-			create:		['isAuth']
+			create:		['isAuth','isAdmin']
 			find:		['isAuth']
 			findOne:	['isAuth']
-			update:		['isAuth']
+			update:		['isAuth','isAdmin']
 			add:		['isAuth']
 			remove:		['isAuth']
-			destroy:	['isAuth']
+			destroy:	['isAuth','isAdmin']
 			populate:	['isAuth']
 		BreakdownController:
 			'*':		false 
 			create:		['isAuth','setOwner']
 			find:		['isAuth']
 			findOne:	['isAuth']
-			update:		['isAuth']
+			update:		['isAuth','isOwner']
 			add:		['isAuth']
 			remove:		['isAuth']
 			destroy:	['isAuth']
