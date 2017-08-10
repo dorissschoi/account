@@ -38,5 +38,5 @@ module.exports =
 			update:		['isAuth','isOwner']
 			add:		['isAuth']
 			remove:		['isAuth']
-			destroy:	['isAuth']
+			destroy:	['isAuth','isOwner']
 			populate:	['isAuth']

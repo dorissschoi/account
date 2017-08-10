@@ -6,7 +6,6 @@
   'USER_ID'
   'USER_SECRET'
   'DBURL'
-  'BkDIR'
 ].map (name) ->
   if not (name of process.env)
     throw new Error "process.env.#{name} not yet defined"
@@ -21,5 +20,4 @@ module.exports =
   user:
     id: process.env.USER_ID
     secret: process.env.USER_SECRET
-  bkDir: process.env.BkDIR 
   db: process.env.DBURL
