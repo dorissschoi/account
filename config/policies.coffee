@@ -32,7 +32,7 @@ module.exports =
 			populate:	['isAuth']
 		BreakdownController:
 			'*':		false 
-			create:		['isAuth','setOwner']
+			create:		['isAuth','setCreatedBy']
 			find:		['isAuth']
 			findOne:	['isAuth']
 			update:		['isAuth','isOwner']

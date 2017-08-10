@@ -4,10 +4,10 @@ module.exports =
   schema: true
 
   attributes:
-    username:
+    email:
       type: 'string'
+      primaryKey: true
       required: true
-      unique: true
  
     postTitle:
       type: 'string'
