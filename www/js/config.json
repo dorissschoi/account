@@ -1,4 +1,4 @@
 { OAUTH2_SCOPE: 'User',
-  AUTHURL: 'https://app.ogcio.gov.hk/auth/oauth2/authorize/',
-  CLIENT_ID: 'db',
-  DBURL: 'mongodb://@mongo:27017/' }
+  AUTHURL: 'https://app.ogcio.gov.hk/auth/',
+  CLIENT_ID: 'account-mpp',
+  DBURL: 'mongodb://@mongo:27017/account' }
