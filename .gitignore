@@ -117,3 +117,15 @@ nbproject
 .idea
 .node_history
 .project
+/plugins/
+/platforms/
+
+/template
+/uploads/**
+/www/lib
+/www/js/*.js
+/www/js/*.json
+/*.orig
+
+/data/
+/mongoData/
