@@ -18,7 +18,7 @@ module.exports =
     qty:
       type: 'integer'
 
-    estAmt:
+    Amount:
       type: 'integer' 
 
     vendor: 

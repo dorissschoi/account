@@ -1,7 +1,7 @@
 FROM node
 
 ENV VER=${VER:-master} \
-    REPO=https://github.com/account/account \
+    REPO=https://github.com/dorissschoi/account \
     APP=/usr/src/app
 
 RUN apt-get update && \

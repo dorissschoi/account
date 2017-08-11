@@ -9,7 +9,7 @@ module.exports =
       required: true
       unique: true
 
-    projRefNo:
+    refNo:
       type: 'string'
 
     desc:
@@ -23,5 +23,4 @@ module.exports =
       via: 'vote'
 
     ownedBy: 
-      collection: 'user'
-      via: 'manage'
+      model: 'user'
