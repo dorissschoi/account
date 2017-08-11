@@ -10,7 +10,7 @@ module.exports =
 
     type:
       type: 'string'
-      enum: ['maintenance','procurement','server farm','EGIS','virement']
+      enum: ['maintenance','procurement','server farm','EGIS','virement','approved provision']
 
     desc:
       type: 'string'
