@@ -15,5 +15,5 @@ module.exports =
             voteInstance.details.add newInstance
             voteInstance.save()
         
-            res.ok()
+            res.ok(newInstance)
       .catch res.serverError
