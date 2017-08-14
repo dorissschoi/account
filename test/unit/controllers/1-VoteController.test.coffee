@@ -27,41 +27,21 @@ describe 'VoteController', ->
       .then (res)->
         id = res.body.id
 
-    it 'Read VoteType', ->
+    it 'Read Vote', ->
       request(sails.hooks.http.app)
       .get("/api/vote/#{id}")
       .set('Authorization',"Bearer #{token}")
       .expect 200
  
-    it 'Delete VoteType', ->
+    it 'Update Vote', ->
+      request(sails.hooks.http.app)
+      .put("/api/vote/#{id}")
+      .send({ code: 'B70610088ME10', desc: 'HARDWARE-INHOUSE', type: 'procurement' })
+      .set('Authorization',"Bearer #{token}")
+      .expect 200
+
+    it 'Delete Vote', ->
       request(sails.hooks.http.app)
       .del("/api/vote/#{id}")
       .set('Authorization',"Bearer #{token}")
       .expect 200
-
-
-    it 'Create VoteType for Vote', ->
-      request(sails.hooks.http.app)
-      .post('/api/votetype')
-      .send({ code: 'SOA' })
-      .set('Authorization',"Bearer #{token}")
-      .expect 201
-      .then (res)->
-        Typeid = res.body.id
-
-    it 'Create Vote for VoteType', ->
-      request(sails.hooks.http.app)
-      .post('/api/vote')
-      .send({ code: 'B70610088ME10', desc: 'SOFTWARE INHOUSE', type: 'procurement' })
-      .set('Authorization',"Bearer #{token}")
-      .expect 201
-      .then (res)->
-        id = res.body.id
-
-    it 'Create VoteType and Vote assoc', ->
-      request(sails.hooks.http.app)
-      .post("/api/votetype/#{Typeid}/votes/#{id}")
-      .set('Authorization',"Bearer #{token}")
-      .expect 200
-      .then (res)->
-        id = res.body.id
