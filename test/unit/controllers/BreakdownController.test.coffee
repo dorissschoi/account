@@ -55,7 +55,7 @@ describe 'BreakdownController', ->
  
     it 'Update Breakdown', ->
       request(sails.hooks.http.app)
-      .post('/api/breakdown')
+      .put("/api/breakdown/#{id}")
       .send({ group: 'e', desc: 'Server', amount: 200, vendor: 'ABC',status:'processing', vote:'B77610088ME10'})
       .set('Authorization',"Bearer #{token}")
       .expect 200
