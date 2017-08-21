@@ -22,7 +22,7 @@ describe 'VoteController', ->
     it 'Create VoteType', ->
       request(sails.hooks.http.app)
       .post('/api/votetype')
-      .send({ code: 'DE' })
+      .send({ code: 'DES' })
       .set('Authorization',"Bearer #{token}")
       .then (res)->
         voteTypeid = res.body.id
@@ -30,12 +30,12 @@ describe 'VoteController', ->
     it 'Create Vote', ->
       request(sails.hooks.http.app)
       .post('/api/vote')
-      .send({ code: 'B70610088ME10', desc: 'HARDWARE INHOUSE' ,type:'DE'})
+      .send({ code: 'B70610088ME11', desc: 'HARDWARE INHOUSE' ,type:{id: "#{voteTypeid}" }})
       .set('Authorization',"Bearer #{token}")
-      .expect 200
+      .expect 201
       .then (res)->
         id = res.body.id
-
+    
     it 'Read Vote', ->
       request(sails.hooks.http.app)
       .get("/api/vote/#{id}")
@@ -59,3 +59,4 @@ describe 'VoteController', ->
       request(sails.hooks.http.app)
       .del("/api/votetype/#{voteTypeid}")
       .set('Authorization',"Bearer #{token}")
+    

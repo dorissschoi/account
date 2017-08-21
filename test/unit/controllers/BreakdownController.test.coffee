@@ -31,22 +31,22 @@ describe 'BreakdownController', ->
     it 'Create Vote', ->
       request(sails.hooks.http.app)
       .post('/api/vote')
-      .send({ code: 'B77610088ME10', desc: 'HARDWARE INHOUSE' ,type:'SOA'})
+      .send({ code: 'B77610088M110', desc: 'HARDWARE TEST' ,type:{id: "#{voteTypeid}"}})
       .set('Authorization',"Bearer #{token}")
-      .expect 200
+      .expect 201
       .then (res)->
         voteid = res.body.id
 
     it 'Create Breakdown', ->
       request(sails.hooks.http.app)
       .post('/api/breakdown')
-      .send({ group: 'e', desc: 'Server test', Amount: 200, vendor: 'ABC',status:'outstanding', vote:'B77610088ME10'})
+      .send({group : "e",type:"approved provision", Amount:"2000", status:"settled", vote: {id: "#{voteid}" } })
       .set('Authorization',"Bearer #{token}")
-      .expect 200
+      .expect 201
       .then (res)->
         id = res.body.id
         sails.log.info "id: #{id}"
-
+    
     it 'Read Breakdown', ->
       request(sails.hooks.http.app)
       .get("/api/breakdown/#{id}")

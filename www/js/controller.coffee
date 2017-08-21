@@ -39,11 +39,11 @@ angular
     _.extend $scope,
       model: model
 
-  .controller 'BreakdownListCtrl', ($scope, collection, $location, $ionicPopup) ->
+  .controller 'BreakdownListCtrl', ($scope, sort, collection, $location, $ionicPopup) ->
     _.extend $scope,
       collection: collection
       loadMore: ->
-        collection.$fetch()
+        collection.$fetch params: sort: sort
           .then ->
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert

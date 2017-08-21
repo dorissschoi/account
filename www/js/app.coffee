@@ -73,16 +73,18 @@ angular
           ret.$fetch params: {vote: id}
 
     $stateProvider.state 'app.breakdownList',
-      url: "/breakdown/list"
+      url: "/breakdown/list?sort=vote"
       cache: false
       views:
         'menuContent':
           templateUrl: "templates/breakdown/list.html"
           controller: 'BreakdownListCtrl'
       resolve:
+        sort: ($stateParams) ->
+          return $stateParams.sort
         cliModel: 'model'
-        collection: (cliModel) ->
+        collection: (cliModel, sort) ->
           ret = new cliModel.BreakdownList()
-          ret.$fetch()
+          ret.$fetch params: sort: sort
 				
     $urlRouterProvider.otherwise('/vote/list')
