@@ -13,6 +13,14 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
         (new User(username: 'me/')).$fetch()	
 		
     # Account model
+    class VoteType extends pageableAR.Model
+      $urlRoot: "api/votetype/"
+
+    class VoteTypeList extends pageableAR.PageableCollection
+      model: VoteType
+
+      $urlRoot: "api/votetype/"    
+
     class Vote extends pageableAR.Model
       $urlRoot: "api/vote/"
 
@@ -21,8 +29,24 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
 
       $urlRoot: "api/vote/"    
 
-  
+    class Summary extends pageableAR.Model
+      model: Breakdown 
 
+      $urlRoot: "api/breakdown/vote/:vote/summary"    
+
+    class Breakdown extends pageableAR.Model
+      $urlRoot: "api/breakdown/"
+
+    class BreakdownList extends pageableAR.PageableCollection
+      model: Breakdown
+
+      $urlRoot: "api/breakdown/"
+  
+    VoteType: VoteType
+    VoteTypeList: VoteTypeList
     Vote: Vote
     VoteList: VoteList 	
+    Breakdown: Breakdown
+    BreakdownList: BreakdownList
+    Summary: Summary
     User: User	

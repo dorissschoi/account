@@ -2,23 +2,23 @@ module.exports =
   policies:    
     VoteTypeController:
       '*':       false 
-      create:    ['isAuth']
+      create:    ['isAuth','isAdmin']
       find:      ['isAuth']
       findOne:   ['isAuth']
-      update:    ['isAuth']
+      update:    ['isAuth','isAdmin']
       add:       ['isAuth']
       remove:    ['isAuth']
-      destroy:   ['isAuth']
+      destroy:   ['isAuth','isAdmin']
       populate:  ['isAuth']
     VoteController:
       '*':       false 
-      create:    ['isAuth']
+      create:    ['isAuth','isAdmin']
       find:      ['isAuth']
       findOne:   ['isAuth']
-      update:    ['isAuth']
+      update:    ['isAuth','isAdmin']
       add:       ['isAuth']
       remove:    ['isAuth']
-      destroy:   ['isAuth']
+      destroy:   ['isAuth','isAdmin']
       populate:  ['isAuth']
     UserController:
       '*':       false 
@@ -35,8 +35,9 @@ module.exports =
       create:    ['isAuth','setCreatedBy']
       find:      ['isAuth']
       findOne:   ['isAuth']
-      update:    ['isAuth']
-      add:       ['isAuth']
-      remove:    ['isAuth']
-      destroy:   ['isAuth']
+      update:    ['isAuth','canUpdate']
+      add:       ['isAuth','canUpdate']
+      remove:    ['isAuth','canUpdate']
+      destroy:   ['isAuth','canUpdate']
       populate:  ['isAuth']
+      summary:   ['isAuth']

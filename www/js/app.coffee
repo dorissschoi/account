@@ -31,18 +31,58 @@ angular
       templateUrl: "templates/menu.html"
 	
   # Account 
-    $stateProvider.state 'app.accountList',
-      url: "/account/list"
+    $stateProvider.state 'app.votetypeList',
+      url: "/votetype/list"
       cache: false
       views:
         'menuContent':
-          templateUrl: "templates/account/list.html"
-          controller: 'AccountListCtrl'
+          templateUrl: "templates/votetype/list.html"
+          controller: 'VoteTypeListCtrl'
+      resolve:
+        cliModel: 'model'
+        collection: (cliModel) ->
+          ret = new cliModel.VoteTypeList()
+          ret.$fetch()
+
+    $stateProvider.state 'app.voteList',
+      url: "/vote/list"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/vote/list.html"
+          controller: 'VoteListCtrl'
       resolve:
         cliModel: 'model'	
         collection: (cliModel) ->
           ret = new cliModel.VoteList()
           ret.$fetch()
-					
+
+    $stateProvider.state 'app.SummaryList',
+      url: "/breakdown/summary/:id"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/vote/summary.html"
+          controller: 'SummaryCtrl'
+      resolve:
+        id: ($stateParams) ->
+          $stateParams.id
+        cliModel: 'model'
+        model: (cliModel, id) ->
+          ret = new cliModel.Summary()
+          ret.$fetch params: {vote: id}
+
+    $stateProvider.state 'app.breakdownList',
+      url: "/breakdown/list"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/list.html"
+          controller: 'BreakdownListCtrl'
+      resolve:
+        cliModel: 'model'
+        collection: (cliModel) ->
+          ret = new cliModel.BreakdownList()
+          ret.$fetch()
 				
-    $urlRouterProvider.otherwise('/account/list')
+    $urlRouterProvider.otherwise('/vote/list')
