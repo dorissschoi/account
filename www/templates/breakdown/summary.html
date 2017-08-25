@@ -8,9 +8,15 @@
   </ion-nav-buttons>
 
 <ion-content>
-{{collection}}
+ <ion-list>
+
+    <ion-item
+      class="item-avatar item-complex"
+      ng-repeat="model in collection.models |orderBy:['vote']"
+      ng-controller="ItemCtrl"
+      ng-include="'templates/breakdown/summaryitem.html'">
+    </ion-item>
 
 
+</ion-list>
 </ion-content>
-
-

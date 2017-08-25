@@ -45,6 +45,18 @@ angular.module 'starter.model', ['PageableAR']
 
       $urlRoot: "api/breakdown/summary"
 
+      $fetch: (opts = {}) ->
+        return new Promise (fulfill, reject) =>
+          @$sync('read', @, opts)
+            .then (res) =>
+              data = @$parse(res.data, opts)
+              if _.isArray data
+                @.models = data
+                fulfill @
+              else
+                reject 'Not a valid response type'
+            .catch reject
+
   
     VoteType: VoteType
     VoteTypeList: VoteTypeList

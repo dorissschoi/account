@@ -1,12 +1,14 @@
 #BreakdownController
 _ = require 'lodash'
 actionUtil = require 'sails/lib/hooks/blueprints/actionUtil'
-Promise = require 'promise'
+Promise = require 'bluebird'
 
 getRecord = (rst) ->
+  sails.log.info "id: #{JSON.stringify rst.vote}"
   sails.models.vote
     .findOne({id: rst.vote})
     .then (r) ->
+      sails.log.info "get rst: #{JSON.stringify r}"
       rst.vote = r
       return rst
     .catch (err) ->
@@ -28,11 +30,7 @@ module.exports =
         sails.log.info "results: #{JSON.stringify results}"
         Promise.all _.map results, getRecord
           .then (rec) ->
-            r =
-              count: results.length
-              results: rec
-            sails.log.info "r: #{JSON.stringify rec}"
-            res.ok r
+            res.ok rec
       .catch res.serverError
 
   summary: (req, res) ->
