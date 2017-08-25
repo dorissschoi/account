@@ -28,7 +28,7 @@ angular
     _.extend $scope,
       collection: collection
       summary: (vote) ->
-        $location.url "/breakdown/summary/#{vote.id}"
+        $location.url "/breakdown/vote/#{vote.id}/summary"
       loadMore: ->
         collection.$fetch()
           .then ->
@@ -44,6 +44,15 @@ angular
       collection: collection
       loadMore: ->
         collection.$fetch params: sort: sort
+          .then ->
+            $scope.$broadcast('scroll.infiniteScrollComplete')
+          .catch alert
+
+  .controller 'SummaryListCtrl', ($scope, collection, $location, $ionicPopup) ->
+    _.extend $scope,
+      collection: collection
+      loadMore: ->
+        collection.$fetch 
           .then ->
             $scope.$broadcast('scroll.infiniteScrollComplete')
           .catch alert

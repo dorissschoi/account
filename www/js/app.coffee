@@ -57,8 +57,8 @@ angular
           ret = new cliModel.VoteList()
           ret.$fetch()
 
-    $stateProvider.state 'app.SummaryList',
-      url: "/breakdown/summary/:id"
+    $stateProvider.state 'app.VoteSummary',
+      url: "/breakdown/vote/:id/summary"
       cache: false
       views:
         'menuContent':
@@ -70,7 +70,7 @@ angular
         cliModel: 'model'
         model: (cliModel, id) ->
           ret = new cliModel.Summary()
-          ret.$fetch params: {vote: id}
+          ret.$fetch params: vote: id
 
     $stateProvider.state 'app.breakdownList',
       url: "/breakdown/list?sort=vote"
@@ -86,5 +86,18 @@ angular
         collection: (cliModel, sort) ->
           ret = new cliModel.BreakdownList()
           ret.$fetch params: sort: sort
-				
+
+    $stateProvider.state 'app.SummaryList',
+      url: "/breakdown/summary"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/summary.html"
+          controller: 'SummaryListCtrl'
+      resolve:
+        cliModel: 'model'
+        collection: (cliModel) ->
+          ret = new cliModel.SummaryList()
+          ret.$fetch() 
+
     $urlRouterProvider.otherwise('/vote/list')

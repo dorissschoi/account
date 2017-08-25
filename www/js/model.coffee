@@ -1,11 +1,9 @@
 env = require './env.coffee'
 require 'PageableAR'
-require 'angular-file-saver'
-require 'ng-file-upload'
 		
-angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
+angular.module 'starter.model', ['PageableAR']
 	
-  .factory 'model', (pageableAR, $http, $filter, $log, FileSaver, Upload, $state) ->
+  .factory 'model', (pageableAR, $filter, $log, $state) ->
 
     class User extends pageableAR.Model
       $urlRoot: "org/api/users/"
@@ -41,6 +39,12 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
       model: Breakdown
 
       $urlRoot: "api/breakdown/"
+
+    class SummaryList extends pageableAR.Collection
+      model: Breakdown
+
+      $urlRoot: "api/breakdown/summary"
+
   
     VoteType: VoteType
     VoteTypeList: VoteTypeList
@@ -49,4 +53,5 @@ angular.module 'starter.model', ['PageableAR', 'ngFileSaver', 'ngFileUpload']
     Breakdown: Breakdown
     BreakdownList: BreakdownList
     Summary: Summary
+    SummaryList: SummaryList
     User: User	
