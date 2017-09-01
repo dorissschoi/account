@@ -43,7 +43,7 @@ angular.module 'starter.model', ['PageableAR']
     class SummaryList extends pageableAR.Collection
       model: Breakdown
 
-      $urlRoot: "api/breakdown/summary"
+      $urlRoot: "api/breakdown/status"
 
       $fetch: (opts = {}) ->
         return new Promise (fulfill, reject) =>

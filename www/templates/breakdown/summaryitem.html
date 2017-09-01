@@ -1,10 +1,6 @@
+
 <div class='item-content'>
   <img src="img/icon.png">
-  <h2>{{model.vote.code}}-HK${{model.Amount}}</h2>
+  <h2>Type: {{rec.type}}, Status: {{rec.status}},HK${{rec.Amount}}</h2>
   <p>{{model.status}}</p>
 </div>
-<ion-option-button 
-  class="button button-balanced icon-left ion-ios-browsers"
-  on-tap="detail(model)">
-  Detail
-</ion-option-button>

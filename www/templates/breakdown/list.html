@@ -12,7 +12,7 @@
     <ion-item
       class="item-avatar item-complex"
       on-hold="showAction()"
-      ng-repeat="model in collection.models |orderBy:['vote','completedDate']"
+      ng-repeat="model in collection.models |orderBy:['vote','createdDate']"
       ng-controller="ItemCtrl"
       ng-include="'templates/breakdown/item.html'">
     </ion-item>
@@ -23,4 +23,5 @@
   </ion-list>
 </ion-content>
 
+</ion-view>
 

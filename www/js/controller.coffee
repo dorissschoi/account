@@ -61,3 +61,9 @@ angular
     _.extend $scope,
       showAction: ->
         return true
+  .filter 'remain', ->
+    (collection, search) ->
+      total = 0
+      _.each search, (b) ->
+        total += b.Amount
+      return total

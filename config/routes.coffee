@@ -4,6 +4,6 @@ module.exports =
       controller: 'BreakdownController'
       action: 'summary'
 
-    'GET /api/breakdown/summary':
+    'GET /api/breakdown/status':
       controller: 'BreakdownController'
-      action: 'allSummary'
+      action: 'status'

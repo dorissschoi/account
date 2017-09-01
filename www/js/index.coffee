@@ -20,3 +20,5 @@ require './controller.coffee'
 require './model.coffee'
 require './platform.coffee'
 require './locale.coffee'
+require 'angular-filter'
+

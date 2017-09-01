@@ -3,6 +3,7 @@ require 'log_toast'
 
 angular
   .module 'starter', [
+    'angular.filter',
     'ionic', 
     'starter.controller', 
     'starter.model', 
