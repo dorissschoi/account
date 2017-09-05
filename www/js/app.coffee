@@ -3,7 +3,6 @@ require 'log_toast'
 
 angular
   .module 'starter', [
-    'angular.filter',
     'ionic', 
     'starter.controller', 
     'starter.model', 
@@ -42,11 +41,40 @@ angular
       resolve:
         cliModel: 'model'
         collection: (cliModel) ->
-          ret = new cliModel.VoteTypeList()
-          ret.$fetch()
+          ret = new cliModel.VoteTypeList().$fetch()
+
+    $stateProvider.state 'app.votetypeCreate',
+      url: "/votetype/create"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/votetype/create.html"
+           controller: 'VoteTypeCtrl'
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.VoteType()
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+
+    $stateProvider.state 'app.votetypeDetails',
+      url: "/votetype/read/:id"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/votetype/read.html"
+           controller: 'VoteTypeCtrl'
+      resolve:
+        cliModel: 'model'
+        id: ($stateParams) ->
+          $stateParams.id
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+        model: (cliModel, id) ->
+          ret = new cliModel.VoteType({id:id}).$fetch()
 
     $stateProvider.state 'app.voteList',
-      url: "/vote/list"
+      url: "/vote"
       cache: false
       views:
         'menuContent':
@@ -55,8 +83,41 @@ angular
       resolve:
         cliModel: 'model'	
         collection: (cliModel) ->
-          ret = new cliModel.VoteList()
-          ret.$fetch()
+          ret = new cliModel.VoteList().$fetch()
+
+    $stateProvider.state 'app.voteCreate',
+      url: "/vote/create"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/vote/create.html"
+           controller: 'VoteCtrl'
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.Vote()
+        votetypeList : (cliModel) ->
+          ret = new cliModel.VoteTypeList().$fetch()
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+
+    $stateProvider.state 'app.voteUpdate',
+      url: "/vote/update/:id"
+      cache: false
+      views:
+        'menuContent':
+           templateUrl: "templates/vote/update.html"
+           controller: 'VoteCtrl'
+      resolve:
+        cliModel: 'model'
+        id: ($stateParams) ->
+          $stateParams.id
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+        votetypeList : (cliModel) ->
+          ret = new cliModel.VoteTypeList().$fetch()
+        model: (cliModel, id) ->
+          ret = new cliModel.Vote({id:id}).$fetch()
 
     $stateProvider.state 'app.VoteSummary',
       url: "/breakdown/vote/:id/summary"
@@ -88,6 +149,26 @@ angular
           ret = new cliModel.BreakdownList()
           ret.$fetch params: sort: sort
 
+    $stateProvider.state 'app.breakdownCreate',
+      url: "/breakdown/create"
+      cache: false
+      views:
+        'menuContent':
+          templateUrl: "templates/breakdown/create.html"
+          controller: "BreakdownCtrl"
+      resolve:
+        cliModel: 'model'
+        model: (cliModel) ->
+          ret = new cliModel.Breakdown()
+        typeList: (model) ->
+          ret = model.selType()
+        statusList: (model) ->
+          ret = model.selStatus()
+        voteList: (cliModel) ->
+          ret = new cliModel.VoteList().$fetch()
+        userList: (cliModel) ->
+          ret = new cliModel.UserList().$fetch()
+
     $stateProvider.state 'app.SummaryList',
       url: "/breakdown/summary"
       cache: false
@@ -101,4 +182,4 @@ angular
           ret = new cliModel.SummaryList()
           ret.$fetch() 
 
-    $urlRouterProvider.otherwise('/vote/list')
+    $urlRouterProvider.otherwise('/vote')

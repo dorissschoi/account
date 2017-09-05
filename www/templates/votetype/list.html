@@ -7,21 +7,19 @@
       </div>
   </ion-nav-buttons>
 
-<ion-content>
-  <ion-list>
-    <ion-item
-      class="item-avatar item-complex"
-      on-hold="showAction()"
-      ng-repeat="model in collection.models"
-      ng-controller="ItemCtrl"
-      ng-include="'templates/votetype/item.html'">
-    </ion-item>
-    <ion-infinite-scroll
-      ng-if="collection.state.skip < collection.state.count"
-      on-infinite="loadMore()">
-    </ion-infinite-scroll>
-  </ion-list>
-</ion-content>
-
+  <ion-content>
+    <ion-list>
+      <ion-item
+        class="item-avatar item-complex"
+        on-hold="showAction()"
+        ng-repeat="model in collection.models"
+        ng-controller="ItemCtrl"
+        ng-include="'templates/votetype/item.html'">
+      </ion-item>
+      <ion-infinite-scroll
+        ng-if="collection.state.skip < collection.state.count"
+        on-infinite="loadMore()">
+      </ion-infinite-scroll>
+    </ion-list>
+  </ion-content>
 </ion-view>
-

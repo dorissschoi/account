@@ -5,7 +5,6 @@
   "description": "account application",
   "keywords": [],
   "dependencies": {
-    "angular-filter": "^0.5.16",
     "bluebird": "^3.4.3",
     "coffee-script": "^1.12.4",
     "dateformat": "^2.0.0",

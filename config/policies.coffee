@@ -41,4 +41,6 @@ module.exports =
       destroy:   ['isAuth','canUpdate']
       populate:  ['isAuth']
       summary:   ['isAuth']
-      status:['isAuth']
+      status:    ['isAuth']
+      getStatus: ['isAuth'] 
+      getType:   ['isAuth'] 

@@ -1,7 +1,7 @@
 <div class='item-content'>
   <img src="img/icon.png">
   <h2>{{model.vote.code}}-{{model.type}}-HK${{model.Amount}}</h2>
-  <p>{{model.status}} {{model.createdDate | date:'dd-MM-yyyy'}} - {{model.completedDate | date: 'dd-MM-yyyy'||'' }}</p>
+  <p>{{model.status}}-{{model.completedDate  | date: 'dd-MM-yyyy' }}</p>
 </div>
 <ion-option-button 
   class="button button-balanced icon-left ion-ios-browsers"

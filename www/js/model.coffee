@@ -1,9 +1,11 @@
 env = require './env.coffee'
 require 'PageableAR'
+Promise = require 'bluebird'
+_ = require 'lodash'
 		
 angular.module 'starter.model', ['PageableAR']
 	
-  .factory 'model', (pageableAR, $filter, $log, $state) ->
+  .factory 'model', (pageableAR, $http, $filter, $log, $state) ->
 
     class User extends pageableAR.Model
       $urlRoot: "org/api/users/"
@@ -18,6 +20,14 @@ angular.module 'starter.model', ['PageableAR']
       model: VoteType
 
       $urlRoot: "api/votetype/"    
+
+    class User extends pageableAR.Model
+      $urlRoot: "api/user/"
+
+    class UserList extends pageableAR.PageableCollection
+      model: User
+
+      $urlRoot: "api/user/"
 
     class Vote extends pageableAR.Model
       $urlRoot: "api/vote/"
@@ -34,6 +44,30 @@ angular.module 'starter.model', ['PageableAR']
 
     class Breakdown extends pageableAR.Model
       $urlRoot: "api/breakdown/"
+
+      $parse: (res, opts) ->
+        if !_.isUndefined(res.InvoiceDate)
+          if !_.isNull(res.InvoiceDate)
+            res.InvoiceDate = new Date(res.InvoiceDate)
+        if !_.isUndefined(res.maintStartDate)
+          if !_.isNull(res.maintStartDate)
+            res.maintStartDate = new Date(res.maintStartDate)
+        if !_.isUndefined(res.completedDate)
+          if !_.isNull(res.completedDate)
+            res.completedDate = new Date(res.completedDate)
+         return res
+
+      selStatus: ->
+          $http.get 'api/breakdown/getstatus'
+            .then (res) ->
+               res.data
+            .catch $log.error
+
+      selType: ->
+          $http.get 'api/breakdown/gettype'
+            .then (res) ->
+               res.data
+            .catch $log.error
 
     class BreakdownList extends pageableAR.PageableCollection
       model: Breakdown
@@ -60,10 +94,11 @@ angular.module 'starter.model', ['PageableAR']
   
     VoteType: VoteType
     VoteTypeList: VoteTypeList
+    User: User
+    UserList: UserList
     Vote: Vote
     VoteList: VoteList 	
     Breakdown: Breakdown
     BreakdownList: BreakdownList
     Summary: Summary
     SummaryList: SummaryList
-    User: User	
