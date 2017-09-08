@@ -120,19 +120,17 @@ angular
           ret = new cliModel.Vote({id:id}).$fetch()
 
     $stateProvider.state 'app.VoteSummary',
-      url: "/breakdown/vote/:id/summary"
+      url: "/breakdown/vote/summary"
       cache: false
       views:
         'menuContent':
           templateUrl: "templates/vote/summary.html"
           controller: 'SummaryCtrl'
       resolve:
-        id: ($stateParams) ->
-          $stateParams.id
         cliModel: 'model'
-        model: (cliModel, id) ->
+        model: (cliModel) ->
           ret = new cliModel.Summary()
-          ret.$fetch params: vote: id
+          ret.$fetch 
 
     $stateProvider.state 'app.breakdownList',
       url: "/breakdown/list?sort=vote"

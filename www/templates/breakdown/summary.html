@@ -1,7 +1,7 @@
 <ion-view>
   <ion-nav-buttons side="left">
       <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      <h1 class="title">All Breakdown</h1>
+      <h1 class="title">Breakdown ({{startDate | date:'dd/MM'}} - {{endDate  | date:'dd/MM/yyyy'}})</h1>
       <div class="buttons">
           <button class="button icon-right ion-plus-round" on-tap="$event.stopPropagation(); create()"></button>
       </div>
